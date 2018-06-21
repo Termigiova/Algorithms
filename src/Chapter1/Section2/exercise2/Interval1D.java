@@ -17,9 +17,17 @@ public class Interval1D {
 
     public boolean intersects(Interval1D that) {
 
-        if (this.max < that.min) return false;
-        if (that.max < this.min) return false;
-        return true;
+        if (this.min <= that.min && that.min <= this.max) return true;
+        if (this.min <= that.max && that.max <= this.max) return true;
+        if (that.min <= this.min && this.min <= that.max) return true;
+        if (that.min <= this.max && this.max <= that.max) return true;
+        return false;
+
+    }
+
+    public boolean contains(Interval1D that) {
+
+        return false;
 
     }
 
