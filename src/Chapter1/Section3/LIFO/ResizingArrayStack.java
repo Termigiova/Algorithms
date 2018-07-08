@@ -2,6 +2,8 @@ package Chapter1.Section3.LIFO;
 
 import java.util.Iterator;
 
+//  Pushdown (LIFO) stack (resizing array implementation)
+
 public class ResizingArrayStack<Item> implements Iterable<Item> {
 
     private Item[]  a = (Item[]) new Object[1];  // Stack items
