@@ -1,11 +1,9 @@
 package Chapter1.Section3.FIFO;
 
-import Chapter1.Section3.PushdownStack.Stack;
-
 import java.util.Iterator;
 
 //  FIFO Queue
-public class Queue<Item> {
+public class Queue<Item> implements Iterable<Item> {
 
     private Node    first;  //  Link to least recently added node
     private Node    last;   //  Link to most recently added node

@@ -6,7 +6,7 @@ import edu.princeton.cs.introcs.StdOut;
 import java.util.Iterator;
 
 //  Pushdown stack (linked-list implementation)
-public class Stack<Item> {
+public class Stack<Item> implements Iterable<Item> {
 
     private Node    first;  //  Top of stack (Most recently added node)
     private int     N;      //  Number of items
@@ -59,8 +59,7 @@ public class Stack<Item> {
     {   // Create a stack and push/pop strings as directed on StdIn.
         Stack<String> s = new Stack<String>();
 
-        while(!StdIn.isEmpty())
-        {
+        while(!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if(!item.equals("-"))
                 s.push(item);
