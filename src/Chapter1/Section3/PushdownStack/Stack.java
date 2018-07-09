@@ -37,6 +37,10 @@ public class Stack<Item> implements Iterable<Item> {
         return item;
     }
 
+    public Item peek() {
+        return first.item;
+    }
+
     public Iterator<Item> iterator()
     {   return new ListIterator();  }
 
@@ -66,6 +70,7 @@ public class Stack<Item> implements Iterable<Item> {
             else if(!item.isEmpty()) StdOut.print(s.pop() + " ");
         }
         StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println(s.peek());
     }
 
 }
