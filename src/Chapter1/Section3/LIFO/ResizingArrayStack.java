@@ -12,7 +12,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     private void resize(int max)
     {   // Move stack to a new array of size max
         Item [] temp = (Item[]) new Object[max];
-        for (int i = 0; i < max; i++)
+        for (int i = 0; i < N; i++)
             temp[i] = a[i];
         a = temp;
     }
