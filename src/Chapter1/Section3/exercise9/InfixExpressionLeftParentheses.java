@@ -24,19 +24,19 @@ public class InfixExpressionLeftParentheses {
             return item;
         }
 
-        public boolean isOuterSign(){
+        private boolean isOuterSign(){
             return item.equals("*") || item.equals("/") || item.equals("sqrt");
         }
 
-        public boolean isInnerSign(){
+        private boolean isInnerSign(){
             return item.equals("+") || item.equals("-");
         }
 
-        public boolean isRightParentheses() {
+        private boolean isRightParentheses() {
             return item.equals(")");
         }
 
-        public boolean isNumber() {
+        private boolean isNumber() {
             try {
                 Integer.parseInt(item);
             }
@@ -73,14 +73,14 @@ public class InfixExpressionLeftParentheses {
         }
     }
 
-    public void storeInput() {
+    private void storeInput() {
         while(!StdIn.isEmpty()) {
             String s = StdIn.readString();
             expression.push(s);
         }
     }
 
-    public void createExpression() {
+    private void createExpression() {
         for (String item : expression) {
             Item element = new Item(item);
             pushElement(element);
@@ -119,13 +119,15 @@ public class InfixExpressionLeftParentheses {
         sets.push("(" + leftSet + sign + rightSet + ")");
     }
 
-    public void printExpression() {
+    private void printExpression() {
         for (String item : sets)
             StdOut.print(item + " ");
     }
 
 
     public static void main(String args[]) {
+
+        // Test with: "1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )"
 
         InfixExpressionLeftParentheses test = new InfixExpressionLeftParentheses();
         test.storeInput();
