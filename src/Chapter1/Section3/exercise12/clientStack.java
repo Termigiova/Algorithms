@@ -5,6 +5,9 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class clientStack {
 
+    private Stack<String> stack = new Stack<>();
+    private Stack<String> copiedStack;
+
     private static Stack copy(Stack<String> stack) {
         Stack<String> copyReverseStack = new Stack<String>();
         Stack<String> copyStack = new Stack<String>();
@@ -18,21 +21,22 @@ public class clientStack {
         return copyStack;
     }
 
+
     public static void main(String args[]) {
-        Stack<String> testStack = new Stack<>();
-        Stack<String> testCopyStack;
+
+        clientStack test = new clientStack();
 
         for (int i = 10; i > 0; i--)
-            testStack.push("" + i);
+            test.stack.push("" + i);
 
-        testCopyStack = copy(testStack);
+        test.copiedStack = copy(test.stack);
 
-        for (String item:testStack)
+        for (String item:test.stack)
             StdOut.print(item);
 
         StdOut.println();
 
-        for (String item:testCopyStack)
+        for (String item:test.copiedStack)
             StdOut.print(item);
     }
 
