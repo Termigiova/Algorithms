@@ -46,6 +46,33 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         return item;
     }
 
+    private void delete(Integer element) {
+        try {
+            Node current = getNthElementInList(element);
+            Node next = current.next;
+            Node previous = current.previous;
+
+            next.previous = previous;
+            previous.next = next;
+        } catch (Exception e) {
+            StdOut.print("Error: " + e);
+        }
+    }
+
+    private Node getNthElementInList(Integer element) {
+        Node current = first;
+        if (element == 0)
+            return current;
+        try {
+            for (int i = 1; i < element; i++)
+                current = current.next;
+            return current;
+        } catch (Exception e) {
+            StdOut.print("Error: " + e);
+        }
+        return null;
+    }
+
     private void removeLastNode() {
         last = last.previous;
         last.next = null;
@@ -69,7 +96,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
     }
 
     private static void fillList(DoublyLinkedList list) {
-        for (int i = 0; i < 10; i++)
+        for (int i = 1; i < 10; i++)
             list.enqueue(i);
     }
 
@@ -93,6 +120,9 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         testLinkedList.enqueue(9);
         printList(testLinkedList);
 
+        // Exercise 1.3.20
+        testLinkedList.delete(5);
+        printList(testLinkedList);
 
 
     }
