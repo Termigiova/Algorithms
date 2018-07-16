@@ -74,10 +74,6 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         N--;
     }
 
-    private void find(Item item) {
-
-    }
-
     public Iterator<Item> iterator()
     {   return new ListIterator();  }
 
@@ -130,6 +126,21 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         return false;
     }
 
+    private void removeAfter(Node listNode) {
+        try {
+            Node deletedNode = listNode.next;
+            Node nextNode = deletedNode.next;
+            if (deletedNode != null) {
+                if (nextNode != null) {
+                    listNode.next = nextNode;
+                    nextNode.previous = listNode;
+                } else listNode.next = null;
+            }
+        } catch (NullPointerException e) {
+            StdOut.println("Element could not be deleted");
+        }
+    }
+
     public static void main(String args[]) {
 
         DoublyLinkedList<Integer> testLinkedList = new DoublyLinkedList<>();
@@ -155,6 +166,13 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
             StdOut.print("Found element " + element + "!");
         else
             StdOut.print("Could not find element " + element);
+        StdOut.println();
+
+        // Exercise 1.3.24
+        // Method removeAfter() that takes a linked-list Node as argument and removes the node following the given one
+        // (and does nothing if the argument or the next field in the argument node is null).
+        testLinkedList.removeAfter(testLinkedList.getNthElementInList(7));
+        printList(testLinkedList);
 
     }
 
